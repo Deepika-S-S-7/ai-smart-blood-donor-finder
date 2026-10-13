@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | AI-Based Smart Blood Donor Finder</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/auth.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/index.html" class="brand-logo">
+        <div class="blood-drop-icon"><span>🩸</span></div>
+        <div class="brand-text">
+          <span>Smart <span class="accent">BloodFinder</span></span>
+          <small>AI-Assisted Donor Network</small>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/search.html" class="nav-link">Find Blood</a></li>
+        <li><a href="/donor-register.html" class="nav-link">Become a Donor</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="/login.html" class="btn btn-outline btn-sm">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="auth-icon">👤</div>
+        <h1 class="auth-title">Create Account</h1>
+        <p class="auth-subtitle">Register to request blood and track donor responses</p>
+      </div>
+
+      <div class="role-radio-group">
+        <div class="role-radio-label active">
+          🩸 Blood Seeker / Patient
+        </div>
+        <a href="/donor-register.html" class="role-radio-label" style="color: inherit; text-decoration: none;">
+          ❤️ Register as Donor
+        </a>
+      </div>
+
+      <form id="register-form">
+        <div class="form-group">
+          <label class="form-label" for="reg-name">Full Name <span class="req">*</span></label>
+          <input type="text" id="reg-name" class="form-control" placeholder="e.g. John Doe" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="reg-email">Email Address <span class="req">*</span></label>
+          <input type="email" id="reg-email" class="form-control" placeholder="john@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="reg-phone">Phone Number <span class="req">*</span></label>
+          <input type="tel" id="reg-phone" class="form-control" placeholder="10-digit mobile number" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="reg-city">City <span class="req">*</span></label>
+            <input type="text" id="reg-city" class="form-control" placeholder="e.g. Mumbai" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-area">Area / Locality <span class="req">*</span></label>
+            <input type="text" id="reg-area" class="form-control" placeholder="e.g. Andheri East" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Password <span class="req">*</span></label>
+            <input type="password" id="reg-password" class="form-control" placeholder="Min. 6 chars" required minlength="6">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-confirm">Confirm Password <span class="req">*</span></label>
+            <input type="password" id="reg-confirm" class="form-control" placeholder="Re-enter password" required minlength="6">
+          </div>
+        </div>
+
+        <button type="submit" id="reg-submit-btn" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+          Create Seeker Account ➔
+        </button>
+      </form>
+
+      <div class="auth-footer-text">
+        Already have an account? <a href="/login.html">Sign in here</a> <br>
+        Want to donate blood? <a href="/donor-register.html">Register as a Life Saver Donor</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" style="margin-top: 0;">
+    <div class="container" style="text-align: center; font-size: 0.85rem;">
+      © 2026 AI-Based Smart Blood Donor Finder. Academic CSE Project.
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('register-form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('reg-name').value.trim();
+        const email = document.getElementById('reg-email').value.trim();
+        const phone = document.getElementById('reg-phone').value.trim();
+        const city = document.getElementById('reg-city').value.trim();
+        const area = document.getElementById('reg-area').value.trim();
+        const password = document.getElementById('reg-password').value;
+        if (!isValidName(name)) {
+          showToast('Invalid Name', 'Numbers are not allowed in name. Please enter letters only.', 'warning');
+          document.getElementById('reg-name').focus();
+          return;
+        }
+
+        if (password !== confirm) {
+          showToast('Validation Error', 'Passwords do not match.', 'warning');
+          return;
+        }
+
+        if (phone.length < 10) {
+          showToast('Validation Error', 'Please enter a valid 10-digit phone number.', 'warning');
+          return;
+        }
+
+        showLoading('Creating your account...');
+        const btn = document.getElementById('reg-submit-btn');
+        btn.disabled = true;
+
+        try {
+          const res = await apiRequest('/auth/register', {
+            method: 'POST',
+            body: { name, email, phone, city, area, password }
+          });
+
+          hideLoading();
+          btn.disabled = false;
+
+          if (res.success && res.token) {
+            saveSession(res.token, res.user);
+            showToast('Registration Successful', res.message, 'success');
+            setTimeout(() => {
+              window.location.href = '/dashboard.html';
+            }, 700);
+          } else {
+            showToast('Registration Failed', res.message || 'Error creating account.', 'error');
+          }
+        } catch (err) {
+          hideLoading();
+          btn.disabled = false;
+          showToast('Error', err.message || 'Registration failed.', 'error');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

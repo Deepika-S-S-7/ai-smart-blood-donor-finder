@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | AI-Based Smart Blood Donor Finder</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/auth.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/index.html" class="brand-logo">
+        <div class="blood-drop-icon"><span>🩸</span></div>
+        <div class="brand-text">
+          <span>Smart <span class="accent">BloodFinder</span></span>
+          <small>AI-Assisted Donor Network</small>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/search.html" class="nav-link">Find Blood</a></li>
+        <li><a href="/donor-register.html" class="nav-link">Become a Donor</a></li>
+        <li><a href="/emergency-request.html" class="nav-link" style="color: var(--primary);">Emergency 🚨</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="/register.html" class="btn btn-primary btn-sm">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="auth-icon">🔐</div>
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-subtitle">Sign in to manage your donor profile or blood requests</p>
+      </div>
+
+      <!-- Quick Demo Credentials Box for College Evaluators -->
+      <div style="background: #f8fafc; border: 1px dashed var(--border); padding: 12px 16px; border-radius: var(--radius-sm); margin-bottom: 24px; font-size: 0.85rem;">
+        <strong style="color: var(--primary);">🎓 Demo Accounts (Click to Autofill):</strong>
+        <div style="display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap;">
+          <button type="button" class="btn btn-outline btn-sm demo-fill-btn" data-email="admin@bloodfinder.org" data-pwd="Admin@123">
+            Admin
+          </button>
+          <button type="button" class="btn btn-outline btn-sm demo-fill-btn" data-email="seeker@example.com" data-pwd="User@123">
+            Blood Seeker
+          </button>
+          <button type="button" class="btn btn-outline btn-sm demo-fill-btn" data-email="rajesh.a_pos@example.com" data-pwd="Donor@123">
+            Donor (A+)
+          </button>
+        </div>
+      </div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label" for="login-email">Email Address <span class="req">*</span></label>
+          <input type="email" id="login-email" class="form-control" placeholder="name@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="login-password">Password <span class="req">*</span></label>
+          <div class="pwd-wrap">
+            <input type="password" id="login-password" class="form-control" placeholder="Enter your password" required>
+            <button type="button" class="pwd-toggle-btn" id="toggle-pwd-btn" aria-label="Toggle password view">👁️</button>
+          </div>
+        </div>
+
+        <button type="submit" id="login-submit-btn" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+          Sign In ➔
+        </button>
+      </form>
+
+      <div class="auth-footer-text">
+        Don't have an account yet? <br>
+        <a href="/register.html">Register as Seeker</a> &nbsp;|&nbsp;
+        <a href="/donor-register.html">Register as Donor</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" style="margin-top: 0;">
+    <div class="container" style="text-align: center; font-size: 0.85rem;">
+      © 2026 AI-Based Smart Blood Donor Finder. Academic CSE Project.
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Toggle password visibility
+      const toggleBtn = document.getElementById('toggle-pwd-btn');
+      const pwdInput = document.getElementById('login-password');
+      if (toggleBtn && pwdInput) {
+        toggleBtn.addEventListener('click', () => {
+          const isPwd = pwdInput.type === 'password';
+          pwdInput.type = isPwd ? 'text' : 'password';
+          toggleBtn.textContent = isPwd ? '🙈' : '👁️';
+        });
+      }
+
+      // Quick autofill buttons
+      document.querySelectorAll('.demo-fill-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.getElementById('login-email').value = btn.getAttribute('data-email');
+          document.getElementById('login-password').value = btn.getAttribute('data-pwd');
+        });
+      });
+
+      // Login form submission
+      const form = document.getElementById('login-form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+
+        if (!email || !password) {
+          showToast('Validation Error', 'Please enter email and password.', 'warning');
+          return;
+        }
+
+        showLoading('Signing you in securely...');
+        const btn = document.getElementById('login-submit-btn');
+        btn.disabled = true;
+
+        try {
+          const res = await apiRequest('/auth/login', {
+            method: 'POST',
+            body: { email, password }
+          });
+
+          hideLoading();
+          btn.disabled = false;
+
+          if (res.success && res.token) {
+            saveSession(res.token, res.user);
+            showToast('Welcome Back', res.message, 'success');
+            
+            setTimeout(() => {
+              if (res.user.role === 'admin') {
+                window.location.href = '/admin.html';
+              } else {
+                window.location.href = '/dashboard.html';
+              }
+            }, 600);
+          } else {
+            showToast('Login Failed', res.message || 'Invalid credentials.', 'error');
+          }
+        } catch (err) {
+          hideLoading();
+          btn.disabled = false;
+          showToast('Authentication Error', err.message || 'Login failed', 'error');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

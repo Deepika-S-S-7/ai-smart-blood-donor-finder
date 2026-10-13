@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About & AI Algorithm | Smart Blood Donor Finder</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/index.html" class="brand-logo">
+        <div class="blood-drop-icon"><span>🩸</span></div>
+        <div class="brand-text">
+          <span>Smart <span class="accent">BloodFinder</span></span>
+          <small>AI-Assisted Donor Network</small>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/search.html" class="nav-link">Find Blood</a></li>
+        <li><a href="/donor-register.html" class="nav-link">Become a Donor</a></li>
+        <li><a href="/emergency-request.html" class="nav-link" style="color: var(--primary);">Emergency 🚨</a></li>
+        <li><a href="/about.html" class="nav-link active">About AI</a></li>
+      </ul>
+
+      <div class="nav-actions" id="nav-actions">
+        <!-- Injected dynamically via auth.js -->
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 60px 0 80px;">
+    <div class="container" style="max-width: 960px;">
+
+      <!-- Hero Header -->
+      <div style="text-align: center; margin-bottom: 48px;">
+        <span class="badge-tag" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: #ffebee; color: var(--primary); border-radius: var(--radius-full); font-weight: 700; font-size: 0.85rem; margin-bottom: 12px;">
+          🎓 College CSE Academic Project
+        </span>
+        <h1 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 16px;">
+          About <span style="color: var(--primary);">AI-Based Smart Blood Donor Finder</span>
+        </h1>
+        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 720px; margin: 0 auto;">
+          An academic technological solution engineered to address critical donor search delays during trauma cases, surgical operations, and severe blood shortages.
+        </p>
+      </div>
+
+      <!-- Problem Statement & Solution -->
+      <div class="dash-panel" style="margin-bottom: 36px; padding: 36px;">
+        <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; color: var(--text-main);">
+          The Critical Challenge in Emergency Blood Acquisition
+        </h2>
+        <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
+          During medical emergencies, finding compatible blood is often delayed by fragmented communication, outdated static donor contact lists, and lack of real-time availability tracking. Traditional donor lists return random contacts without evaluating whether the donor is currently available, nearby, or medically eligible based on mandatory rest intervals.
+        </p>
+        <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.7;">
+          The <strong>Smart Blood Donor Finder</strong> replaces static directories with an <em>intelligent rule-based matching engine</em> that dynamically prioritizes donors most likely to deliver blood rapidly and safely to the patient's hospital bed.
+        </p>
+      </div>
+
+      <!-- The AI Matching Algorithm Detailed Explanation -->
+      <div class="dash-panel" style="margin-bottom: 36px; padding: 36px;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+          <span style="font-size: 1.8rem;">🧠</span>
+          <h2 style="font-size: 1.6rem; font-weight: 800;">The 100-Point Rule-Based Matching Algorithm</h2>
+        </div>
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px;">
+          In accordance with project design, the AI component does not use opaque machine learning black boxes. Instead, it utilizes an interpretable, mathematically transparent multi-factor weighted ranking algorithm:
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;">
+          <div style="background: #f8fafc; border: 1.5px solid var(--border); padding: 20px; border-radius: var(--radius-md);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <strong style="font-size: 1.1rem; color: var(--primary);">1. Blood Compatibility</strong>
+              <span class="badge-status accepted">50 Points Max</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Strict Red Blood Cell (RBC) antigen check. Identical blood group grants 50 pts; alternative compatible donor (e.g., O- for A+) grants 45 pts. <strong>Incompatible donors receive 0 points and are strictly excluded from results.</strong>
+            </p>
+          </div>
+
+          <div style="background: #f8fafc; border: 1.5px solid var(--border); padding: 20px; border-radius: var(--radius-md);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <strong style="font-size: 1.1rem; color: var(--primary);">2. Location Proximity</strong>
+              <span class="badge-status accepted">25 Points Max</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Calculated based on hospital city and neighborhood. Same city & same neighborhood: 25 pts. Same city, different neighborhood: 15 pts. Different city: 5 pts.
+            </p>
+          </div>
+
+          <div style="background: #f8fafc; border: 1.5px solid var(--border); padding: 20px; border-radius: var(--radius-md);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <strong style="font-size: 1.1rem; color: var(--primary);">3. Live Availability</strong>
+              <span class="badge-status accepted">15 Points Max</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Real-time donor toggle. Donors with status "Available" receive 15 pts. "Temporarily Unavailable" donors receive 0 pts and are pushed to the bottom of the rankings.
+            </p>
+          </div>
+
+          <div style="background: #f8fafc; border: 1.5px solid var(--border); padding: 20px; border-radius: var(--radius-md);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <strong style="font-size: 1.1rem; color: var(--primary);">4. Safe Donation Recency</strong>
+              <span class="badge-status accepted">10 Points Max</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Medical safety interval: >= 90 days since last donation (or first-time donor) grants 10 pts. Donors within 60-89 days receive 5 pts. Donors with &lt; 60 days rest period receive 0 pts.
+            </p>
+          </div>
+        </div>
+
+        <div style="background: #fff5f5; border-left: 4px solid var(--primary); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; font-size: 0.9rem;">
+          <strong>Total Score Formula:</strong> <code>Score = Compat(50) + Location(25) + Availability(15) + Recency(10)</code> <br>
+          Displayed as <strong>"Application Match Score: XX%"</strong> with clear ranking tiers: Optimal Match (>= 85%), High Match (70-84%), Moderate Match (50-69%).
+        </div>
+      </div>
+
+      <!-- Red Blood Cell Compatibility Matrix Reference -->
+      <div class="dash-panel" id="compatibility" style="margin-bottom: 36px; padding: 36px;">
+        <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 16px;">
+          Red Blood Cell (RBC) Compatibility Matrix
+        </h2>
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px;">
+          Standard red blood cell antigen compatibility enforced by backend service <code>backend/services/compatibility.py</code>:
+        </p>
+
+        <div class="table-responsive">
+          <table class="app-table">
+            <thead>
+              <tr>
+                <th>Recipient Blood Type</th>
+                <th>Can Safely Receive Red Blood Cells From</th>
+                <th>Clinical Classification</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>A+</strong></td><td>A+, A-, O+, O-</td><td>Standard Type</td></tr>
+              <tr><td><strong>A-</strong></td><td>A-, O-</td><td>Rh Negative Type</td></tr>
+              <tr><td><strong>B+</strong></td><td>B+, B-, O+, O-</td><td>Standard Type</td></tr>
+              <tr><td><strong>B-</strong></td><td>B-, O-</td><td>Rh Negative Type</td></tr>
+              <tr><td><strong>AB+</strong></td><td><strong>All 8 Blood Types (A+, A-, B+, B-, AB+, AB-, O+, O-)</strong></td><td><span class="badge-status accepted">Universal Recipient</span></td></tr>
+              <tr><td><strong>AB-</strong></td><td>AB-, A-, B-, O-</td><td>Rh Negative Type</td></tr>
+              <tr><td><strong>O+</strong></td><td>O+, O-</td><td>High Demand Type</td></tr>
+              <tr><td><strong>O-</strong></td><td><strong>O- Only</strong></td><td><span class="badge-status emergency">Universal Donor</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- System Architecture & Tech Stack -->
+      <div class="dash-panel" style="margin-bottom: 36px; padding: 36px;">
+        <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 16px;">
+          Technology Stack & System Architecture
+        </h2>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;">
+          <div style="background: #f8fafc; border: 1px solid var(--border); padding: 20px; border-radius: var(--radius-md);">
+            <strong style="color: var(--primary); font-size: 1.05rem;">Frontend Layer</strong>
+            <ul style="margin-top: 10px; font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;">
+              <li>• HTML5 Semantic Elements</li>
+              <li>• Responsive CSS3 & Custom Variables</li>
+              <li>• Vanilla JavaScript (ES6+)</li>
+              <li>• Asynchronous Fetch API</li>
+              <li>• No Heavy JS Frameworks</li>
+            </ul>
+          </div>
+
+          <div style="background: #f8fafc; border: 1px solid var(--border); padding: 20px; border-radius: var(--radius-md);">
+            <strong style="color: var(--primary); font-size: 1.05rem;">Backend Layer</strong>
+            <ul style="margin-top: 10px; font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;">
+              <li>• Python 3.14</li>
+              <li>• Flask RESTful Framework</li>
+              <li>• Werkzeug Password Hashing</li>
+              <li>• Flask-CORS Middleware</li>
+              <li>• Modular Blueprint Architecture</li>
+            </ul>
+          </div>
+
+          <div style="background: #f8fafc; border: 1px solid var(--border); padding: 20px; border-radius: var(--radius-md);">
+            <strong style="color: var(--primary); font-size: 1.05rem;">Database Layer</strong>
+            <ul style="margin-top: 10px; font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;">
+              <li>• MySQL 8 / MariaDB</li>
+              <li>• XAMPP Local Development</li>
+              <li>• PyMySQL Driver</li>
+              <li>• Parameterized SQL Queries</li>
+              <li>• Foreign Keys & Cascade Rules</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prominent Medical Disclaimer -->
+      <div style="background: #fef2f2; border: 2px solid #f87171; border-radius: var(--radius-lg); padding: 28px; text-align: center;">
+        <h3 style="color: #b91c1c; font-size: 1.3rem; font-weight: 800; margin-bottom: 8px;">
+          ⚠️ Academic & Medical Disclaimer
+        </h3>
+        <p style="color: #7f1d1d; font-size: 0.95rem; line-height: 1.6; max-width: 780px; margin: 0 auto;">
+          The <strong>AI-Based Smart Blood Donor Finder</strong> is an academic engineering project developed for university coursework. It functions exclusively as a communication and search prioritization aid. It does <strong>not</strong> provide medical diagnoses, clinical advice, or replace standard blood bank procedures such as blood grouping, antibody screening, and laboratory cross-matching. In life-threatening emergencies, always contact emergency medical services (108 / 112 / 104) and certified blood banks immediately.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="text-align: center; font-size: 0.85rem;">
+      © 2026 AI-Based Smart Blood Donor Finder. Academic CSE Project.
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

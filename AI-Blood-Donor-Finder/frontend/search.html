@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Blood Search | AI-Based Smart Blood Donor Finder</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/search.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/index.html" class="brand-logo">
+        <div class="blood-drop-icon"><span>🩸</span></div>
+        <div class="brand-text">
+          <span>Smart <span class="accent">BloodFinder</span></span>
+          <small>AI-Assisted Donor Network</small>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/search.html" class="nav-link active">Find Blood</a></li>
+        <li><a href="/donor-register.html" class="nav-link">Become a Donor</a></li>
+        <li><a href="/emergency-request.html" class="nav-link" style="color: var(--primary);">Emergency 🚨</a></li>
+        <li><a href="/about.html" class="nav-link">About AI</a></li>
+      </ul>
+
+      <div class="nav-actions" id="nav-actions">
+        <!-- Injected dynamically via auth.js -->
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 40px 0 80px;">
+    <div class="container">
+
+      <!-- Page Header -->
+      <div style="margin-bottom: 28px;">
+        <span class="badge-tag" style="display: inline-flex; align-items: center; gap: 8px; padding: 4px 14px; background: #ffebee; color: var(--primary); border-radius: var(--radius-full); font-weight: 700; font-size: 0.85rem; margin-bottom: 8px;">
+          🧠 100-Point Rule-Based Matching
+        </span>
+        <h1 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 8px;">Intelligent Blood Donor Search</h1>
+        <p style="color: var(--text-muted); max-width: 720px;">
+          Find compatible blood donors ranked by strict Red Blood Cell compatibility, neighborhood proximity, current availability, and safe donation intervals.
+        </p>
+      </div>
+
+      <!-- Search Filter Form Box -->
+      <div class="search-header-box">
+        <form id="donor-search-form">
+          <div class="search-filter-grid">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" for="search-blood-group">Recipient Blood Group <span class="req">*</span></label>
+              <select id="search-blood-group" class="form-control" required>
+                <option value="">-- Select Blood Group --</option>
+                <option value="A+">A+ (A Positive)</option>
+                <option value="A-">A- (A Negative)</option>
+                <option value="B+">B+ (B Positive)</option>
+                <option value="B-">B- (B Negative)</option>
+                <option value="AB+">AB+ (Universal Recipient)</option>
+                <option value="AB-">AB- (AB Negative)</option>
+                <option value="O+">O+ (O Positive)</option>
+                <option value="O-">O- (Universal Donor)</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" for="search-city">City</label>
+              <input type="text" id="search-city" class="form-control" list="city-datalist" placeholder="e.g. Mumbai, Chennai, Delhi">
+              <datalist id="city-datalist"></datalist>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" for="search-area">Area / Locality (Optional)</label>
+              <input type="text" id="search-area" class="form-control" placeholder="e.g. Andheri East, Adyar">
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" for="search-avail">Availability Filter</label>
+              <select id="search-avail" class="form-control">
+                <option value="Available">Available Only</option>
+                <option value="All">All Donors</option>
+              </select>
+            </div>
+
+            <button type="submit" id="search-submit-btn" class="btn btn-primary" style="height: 48px; padding: 0 24px;">
+              🔍 Search Donors
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Results Meta Bar -->
+      <div class="results-meta-bar">
+        <div class="results-count" id="results-count-text">
+          Select blood group and search to see ranked donors
+        </div>
+
+        <div class="results-sort">
+          <label for="sort-by" style="font-weight: 600; font-size: 0.9rem; color: var(--text-muted);">Sort By:</label>
+          <select id="sort-by">
+            <option value="score">⭐ Highest Match Score</option>
+            <option value="location">📍 Nearest Location</option>
+            <option value="availability">🟢 Immediate Availability</option>
+            <option value="recency">⏱️ Safe Donation Recency</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Active Criteria Banner -->
+      <div id="criteria-banner"></div>
+
+      <!-- Results Grid -->
+      <div class="donor-cards-grid" id="donor-results-grid">
+        <!-- Initially rendered or populated via search.js -->
+        <div class="empty-state-box" style="grid-column: 1 / -1;">
+          <div class="empty-state-icon">🩸</div>
+          <h3>Ready to Find Compatible Donors</h3>
+          <p>Select a patient blood group above and click "Search Donors" to run the intelligent matching algorithm.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Send Blood Request Modal -->
+  <div class="modal-backdrop" id="donor-request-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Send Blood Request</h3>
+        <button type="button" class="modal-close-btn" id="modal-close-btn">&times;</button>
+      </div>
+
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
+        Sending a direct notification to donor: <strong id="modal-donor-name" style="color: var(--text-main);">Donor Name</strong>
+      </p>
+
+      <form id="send-donor-request-form">
+        <div class="form-group">
+          <label class="form-label" for="request-notes">Emergency Notes / Surgery Details <span class="req">*</span></label>
+          <textarea id="request-notes" class="form-control" rows="4" placeholder="Please mention patient condition, hospital name, room/bed number, and urgency..." required></textarea>
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px;">
+          <button type="button" class="btn btn-outline" onclick="document.getElementById('donor-request-modal').classList.remove('active');">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary">
+            Send Request to Donor ➔
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container" style="text-align: center; font-size: 0.85rem;">
+      © 2026 AI-Based Smart Blood Donor Finder. Academic CSE Project.
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/search.js"></script>
+</body>
+</html>

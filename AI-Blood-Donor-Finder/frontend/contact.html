@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Support | AI-Based Smart Blood Donor Finder</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/index.html" class="brand-logo">
+        <div class="blood-drop-icon"><span>🩸</span></div>
+        <div class="brand-text">
+          <span>Smart <span class="accent">BloodFinder</span></span>
+          <small>AI-Assisted Donor Network</small>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/search.html" class="nav-link">Find Blood</a></li>
+        <li><a href="/donor-register.html" class="nav-link">Become a Donor</a></li>
+        <li><a href="/emergency-request.html" class="nav-link" style="color: var(--primary);">Emergency 🚨</a></li>
+        <li><a href="/contact.html" class="nav-link active">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions" id="nav-actions">
+        <!-- Injected dynamically via auth.js -->
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 60px 0 80px;">
+    <div class="container">
+
+      <div style="text-align: center; margin-bottom: 48px;">
+        <span class="badge-tag" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: #ffebee; color: var(--primary); border-radius: var(--radius-full); font-weight: 700; font-size: 0.85rem; margin-bottom: 12px;">
+          📞 24/7 Helpline & Support
+        </span>
+        <h1 style="font-size: 2.6rem; font-weight: 900; margin-bottom: 12px;">Get in Touch With Us</h1>
+        <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 650px; margin: 0 auto;">
+          Have questions about blood matching, hospital integration, or need emergency assistance? Our team is here to help.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; margin-bottom: 60px;">
+        
+        <!-- Contact Form Card -->
+        <div class="dash-panel" style="padding: 36px;">
+          <div class="dash-panel-header">
+            <h3 class="dash-panel-title">Send a Message</h3>
+          </div>
+
+          <form id="contact-form">
+            <div class="form-group">
+              <label class="form-label" for="contact-name">Your Full Name <span class="req">*</span></label>
+              <input type="text" id="contact-name" class="form-control" placeholder="e.g. Dr. Arvind Swaminathan" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Email Address <span class="req">*</span></label>
+              <input type="email" id="contact-email" class="form-control" placeholder="name@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" class="form-control" placeholder="e.g. Hospital Blood Bank Partnership">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Message <span class="req">*</span></label>
+              <textarea id="contact-message" class="form-control" rows="5" placeholder="How can we assist you?" required minlength="5"></textarea>
+            </div>
+
+            <button type="submit" id="contact-submit-btn" class="btn btn-primary" style="width: 100%;">
+              Send Message ➔
+            </button>
+          </form>
+        </div>
+
+        <!-- Emergency Helplines & Info Card -->
+        <div>
+          <div class="dash-panel" style="padding: 32px; margin-bottom: 24px;">
+            <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; color: var(--text-main);">
+              🚨 Immediate Emergency Helplines
+            </h3>
+            
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div style="display: flex; gap: 14px; align-items: center; padding: 14px; background: #fef2f2; border-radius: var(--radius-md); border: 1px solid #fecaca;">
+                <div style="font-size: 1.8rem;">📞</div>
+                <div>
+                  <div style="font-size: 0.85rem; color: #991b1b; font-weight: 700;">24x7 Emergency Blood Hotline</div>
+                  <div style="font-size: 1.3rem; font-weight: 900; color: #b91c1c;">1800-BLOOD-HELP</div>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 14px; align-items: center; padding: 14px; background: #f8fafc; border-radius: var(--radius-md); border: 1px solid var(--border);">
+                <div style="font-size: 1.8rem;">🚑</div>
+                <div>
+                  <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 700;">National Emergency Services</div>
+                  <div style="font-size: 1.2rem; font-weight: 800; color: var(--text-main);">112 / 108</div>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 14px; align-items: center; padding: 14px; background: #f8fafc; border-radius: var(--radius-md); border: 1px solid var(--border);">
+                <div style="font-size: 1.8rem;">🏥</div>
+                <div>
+                  <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 700;">National Blood Transfusion Council</div>
+                  <div style="font-size: 1.2rem; font-weight: 800; color: var(--text-main);">104</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-panel" style="padding: 32px;">
+            <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 12px;">
+              🎓 College Department Contact
+            </h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+              Department of Computer Science & Engineering <br>
+              College Academic Project Lab <br>
+              Email: <code>project.cse@bloodfinder.org</code>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="dash-panel" style="padding: 36px;">
+        <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 24px; text-align: center;">
+          Frequently Asked Questions (FAQ)
+        </h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <div style="background: #f8fafc; border: 1px solid var(--border); padding: 20px; border-radius: var(--radius-md);">
+            <strong style="font-size: 1rem; color: var(--text-main); display: block; margin-bottom: 8px;">
+              Who is eligible to register as a donor?
+            </strong>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+              Any healthy individual between 18 and 65 years of age weighing at least 45 kg, with no recent blood donations in the last 90 days, can register.
+            </p>
+          </div>
+
+          <div style="background: #f8fafc; border: 1px solid var(--border); padding: 20px; border-radius: var(--radius-md);">
+            <strong style="font-size: 1rem; color: var(--text-main); display: block; margin-bottom: 8px;">
+              How does the rule-based AI algorithm rank donors?
+            </strong>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+              The engine assigns up to 50 points for blood compatibility, 25 for location proximity, 15 for live availability, and 10 for safe donation recency (total 100 points).
+            </p>
+          </div>
+
+          <div style="background: #f8fafc; border: 1px solid var(--border); padding: 20px; border-radius: var(--radius-md);">
+            <strong style="font-size: 1rem; color: var(--text-main); display: block; margin-bottom: 8px;">
+              Can an incompatible donor ever be matched?
+            </strong>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+              Never. Strict medical Red Blood Cell compatibility filters are applied first. Incompatible blood types receive 0 points and are strictly eliminated from search results.
+            </p>
+          </div>
+
+          <div style="background: #f8fafc; border: 1px solid var(--border); padding: 20px; border-radius: var(--radius-md);">
+            <strong style="font-size: 1rem; color: var(--text-main); display: block; margin-bottom: 8px;">
+              Can donors temporarily pause incoming requests?
+            </strong>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+              Yes! Donors can toggle their status switch to "Temporarily Unavailable" on their dashboard at any time to avoid notifications when sick, traveling, or resting.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="text-align: center; font-size: 0.85rem;">
+      © 2026 AI-Based Smart Blood Donor Finder. Academic CSE Project.
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contact-form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('contact-name').value.trim();
+        const email = document.getElementById('contact-email').value.trim();
+        const subject = document.getElementById('contact-subject').value.trim();
+        const message = document.getElementById('contact-message').value.trim();
+
+        if (typeof isValidName === 'function' && !isValidName(name)) {
+          showToast('Invalid Name', 'Numbers are not allowed in name. Please use letters only.', 'warning');
+          document.getElementById('contact-name').focus();
+          return;
+        }
+
+        showLoading('Sending your message...');
+        const btn = document.getElementById('contact-submit-btn');
+        btn.disabled = true;
+
+        try {
+          const res = await apiRequest('/contact', {
+            method: 'POST',
+            body: { name, email, subject, message }
+          });
+          hideLoading();
+          btn.disabled = false;
+          form.reset();
+          showToast('Message Received', res.message || 'Thank you for reaching out!', 'success');
+        } catch (err) {
+          hideLoading();
+          btn.disabled = false;
+          showToast('Error', err.message || 'Could not send message.', 'error');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

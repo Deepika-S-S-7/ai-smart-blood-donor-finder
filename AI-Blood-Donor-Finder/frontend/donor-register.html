@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Become a Blood Donor | AI-Based Smart Blood Donor Finder</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/auth.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/index.html" class="brand-logo">
+        <div class="blood-drop-icon"><span>🩸</span></div>
+        <div class="brand-text">
+          <span>Smart <span class="accent">BloodFinder</span></span>
+          <small>AI-Assisted Donor Network</small>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/search.html" class="nav-link">Find Blood</a></li>
+        <li><a href="/donor-register.html" class="nav-link active">Become a Donor</a></li>
+        <li><a href="/emergency-request.html" class="nav-link" style="color: var(--primary);">Emergency 🚨</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="/login.html" class="btn btn-outline btn-sm">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="auth-wrapper">
+    <div class="auth-card auth-card-wide">
+      <div class="auth-header">
+        <div class="auth-icon" style="background: #ffebee; color: #d32f2f;">🩸</div>
+        <h1 class="auth-title">Donor Registration</h1>
+        <p class="auth-subtitle">Join our verified donor network and save lives when emergencies strike</p>
+      </div>
+
+      <div class="role-radio-group">
+        <a href="/register.html" class="role-radio-label" style="color: inherit; text-decoration: none;">
+          👤 Register as Seeker
+        </a>
+        <div class="role-radio-label active">
+          ❤️ Register as Life Saver Donor
+        </div>
+      </div>
+
+      <form id="donor-register-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="d-name">Full Name <span class="req">*</span></label>
+            <input type="text" id="d-name" class="form-control" placeholder="e.g. Rajesh Kumar" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="d-email">Email Address <span class="req">*</span></label>
+            <input type="email" id="d-email" class="form-control" placeholder="rajesh@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-row-3">
+          <div class="form-group">
+            <label class="form-label" for="d-bg">Blood Group <span class="req">*</span></label>
+            <select id="d-bg" class="form-control" required>
+              <option value="">-- Select --</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="d-gender">Gender <span class="req">*</span></label>
+            <select id="d-gender" class="form-control" required>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="d-age">Age (18-65) <span class="req">*</span></label>
+            <input type="number" id="d-age" class="form-control" placeholder="e.g. 26" min="18" max="65" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="d-phone">Phone Number <span class="req">*</span></label>
+            <input type="tel" id="d-phone" class="form-control" placeholder="10-digit mobile number" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="d-avail">Availability Status <span class="req">*</span></label>
+            <select id="d-avail" class="form-control" required>
+              <option value="Available">Available Immediately</option>
+              <option value="Temporarily Unavailable">Temporarily Unavailable</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="d-city">City <span class="req">*</span></label>
+            <input type="text" id="d-city" class="form-control" placeholder="e.g. Mumbai" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="d-area">Area / Locality <span class="req">*</span></label>
+            <input type="text" id="d-area" class="form-control" placeholder="e.g. Andheri East" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="d-address">Address (Optional)</label>
+          <input type="text" id="d-address" class="form-control" placeholder="Street name, landmark, or apartment">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="d-last-date">Last Donation Date (Leave empty if first time)</label>
+          <input type="date" id="d-last-date" class="form-control">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="d-password">Password <span class="req">*</span></label>
+            <input type="password" id="d-password" class="form-control" placeholder="Min 6 characters" required minlength="6">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="d-confirm">Confirm Password <span class="req">*</span></label>
+            <input type="password" id="d-confirm" class="form-control" placeholder="Confirm password" required minlength="6">
+          </div>
+        </div>
+
+        <button type="submit" id="d-submit-btn" class="btn btn-primary" style="width: 100%; margin-top: 14px;">
+          Register as Blood Donor ➔
+        </button>
+      </form>
+
+      <div class="auth-footer-text">
+        Already registered? <a href="/login.html">Sign in here</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" style="margin-top: 0;">
+    <div class="container" style="text-align: center; font-size: 0.85rem;">
+      © 2026 AI-Based Smart Blood Donor Finder. Academic CSE Project.
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set max date for last donation to today
+      const dateInput = document.getElementById('d-last-date');
+      if (dateInput) {
+        dateInput.max = new Date().toISOString().split('T')[0];
+      }
+
+      const form = document.getElementById('donor-register-form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('d-name').value.trim();
+        const email = document.getElementById('d-email').value.trim();
+        const blood_group = document.getElementById('d-bg').value;
+        const gender = document.getElementById('d-gender').value;
+        const age = document.getElementById('d-age').value;
+        const phone = document.getElementById('d-phone').value.trim();
+        const availability = document.getElementById('d-avail').value;
+        const city = document.getElementById('d-city').value.trim();
+        const area = document.getElementById('d-area').value.trim();
+        const address = document.getElementById('d-address').value.trim();
+        const last_donation_date = document.getElementById('d-last-date').value || null;
+        const password = document.getElementById('d-password').value;
+        if (!isValidName(name)) {
+          showToast('Invalid Name', 'Numbers are not allowed in donor name. Please use letters only.', 'warning');
+          document.getElementById('d-name').focus();
+          return;
+        }
+
+        if (password !== confirm) {
+          showToast('Mismatch', 'Passwords do not match.', 'warning');
+          return;
+        }
+
+        if (phone.length < 10) {
+          showToast('Invalid Phone', 'Please enter a valid 10-digit mobile number.', 'warning');
+          return;
+        }
+
+        const ageNum = parseInt(age, 10);
+        if (isNaN(ageNum) || ageNum < 18 || ageNum > 65) {
+          showToast('Age Requirement', 'Donor must be between 18 and 65 years of age.', 'warning');
+          return;
+        }
+
+        showLoading('Registering your donor profile...');
+        const btn = document.getElementById('d-submit-btn');
+        btn.disabled = true;
+
+        try {
+          const payload = {
+            name, email, phone, blood_group, gender, age: ageNum,
+            availability, city, area, address, last_donation_date, password
+          };
+
+          const res = await apiRequest('/auth/donor-register', {
+            method: 'POST',
+            body: payload
+          });
+
+          hideLoading();
+          btn.disabled = false;
+
+          if (res.success && res.token) {
+            saveSession(res.token, res.user);
+            showToast('Hero Registered!', res.message, 'success');
+            setTimeout(() => {
+              window.location.href = '/dashboard.html';
+            }, 700);
+          } else {
+            showToast('Registration Failed', res.message || 'Error registering donor.', 'error');
+          }
+        } catch (err) {
+          hideLoading();
+          btn.disabled = false;
+          showToast('Error', err.message || 'Registration failed.', 'error');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

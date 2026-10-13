@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emergency Blood Request | AI-Based Smart Blood Donor Finder</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/auth.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/index.html" class="brand-logo">
+        <div class="blood-drop-icon"><span>🩸</span></div>
+        <div class="brand-text">
+          <span>Smart <span class="accent">BloodFinder</span></span>
+          <small>AI-Assisted Donor Network</small>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/search.html" class="nav-link">Find Blood</a></li>
+        <li><a href="/donor-register.html" class="nav-link">Become a Donor</a></li>
+        <li><a href="/emergency-request.html" class="nav-link active" style="color: var(--primary); font-weight: 800;">Emergency 🚨</a></li>
+        <li><a href="/about.html" class="nav-link">About AI</a></li>
+      </ul>
+
+      <div class="nav-actions" id="nav-actions">
+        <!-- Injected dynamically via auth.js -->
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 40px 0 80px;">
+    <div class="container">
+      
+      <!-- Emergency Header Alert -->
+      <div style="background: linear-gradient(135deg, #b91c1c, #dc2626); color: #fff; padding: 28px 32px; border-radius: var(--radius-lg); margin-bottom: 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; box-shadow: 0 10px 25px rgba(185, 28, 28, 0.3);">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.1rem; margin-bottom: 6px;">
+            <span style="font-size: 1.6rem;">🚨</span> EMERGENCY BLOOD BROADCAST
+          </div>
+          <p style="opacity: 0.95; font-size: 0.95rem; max-width: 700px;">
+            Submitting this request triggers immediate algorithmic scoring to find compatible, available donors in the vicinity of your hospital. A unique tracking ID will be generated.
+          </p>
+        </div>
+        <div style="text-align: right; white-space: nowrap;">
+          <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Helpline</div>
+          <div style="font-size: 1.3rem; font-weight: 900;">1800-BLOOD-HELP</div>
+        </div>
+      </div>
+
+      <div class="auth-wrapper" style="padding: 0; min-height: auto;">
+        <div class="auth-card auth-card-wide" style="margin: 0 auto; box-shadow: var(--shadow-md);">
+          
+          <div class="auth-header" style="text-align: left; margin-bottom: 24px;">
+            <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 6px;">Emergency Patient & Hospital Details</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Please enter accurate hospital location and contact information to ensure rapid response.</p>
+          </div>
+
+          <form id="emergency-request-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="req-patient-name">Patient Full Name <span class="req">*</span></label>
+                <input type="text" id="req-patient-name" class="form-control" placeholder="e.g. Neha Gupta" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="req-blood-group">Required Blood Group <span class="req">*</span></label>
+                <select id="req-blood-group" class="form-control" required>
+                  <option value="">-- Choose Type --</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="req-hospital-name">Hospital Name <span class="req">*</span></label>
+                <input type="text" id="req-hospital-name" class="form-control" placeholder="e.g. Lilavati Hospital & Research Centre" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="req-hospital-loc">Hospital Location / Bed Number</label>
+                <input type="text" id="req-hospital-loc" class="form-control" placeholder="e.g. ICU Bed 4, 3rd Floor">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="req-city">City <span class="req">*</span></label>
+                <input type="text" id="req-city" class="form-control" placeholder="e.g. Mumbai" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="req-area">Area / Locality <span class="req">*</span></label>
+                <input type="text" id="req-area" class="form-control" placeholder="e.g. Bandra West" required>
+              </div>
+            </div>
+
+            <div class="form-row-3">
+              <div class="form-group">
+                <label class="form-label" for="req-contact">Emergency Contact <span class="req">*</span></label>
+                <input type="tel" id="req-contact" class="form-control" placeholder="10-digit number" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="req-units">Units Required <span class="req">*</span></label>
+                <input type="number" id="req-units" class="form-control" value="1" min="1" max="20" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="req-urgency">Urgency Level <span class="req">*</span></label>
+                <select id="req-urgency" class="form-control" required>
+                  <option value="Emergency" selected>🔴 Emergency (Immediate)</option>
+                  <option value="High">🟠 High Priority (Within 6 hrs)</option>
+                  <option value="Normal">🟢 Normal (Scheduled Surgery)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="req-date">Required By Date <span class="req">*</span></label>
+              <input type="date" id="req-date" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="req-info">Additional Medical Information</label>
+              <textarea id="req-info" class="form-control" rows="3" placeholder="Case details, doctor name, patient relation, or specific transfusion instructions..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-emergency btn-lg" style="width: 100%; margin-top: 14px;">
+              🚨 Broadcast Emergency Blood Request ➔
+            </button>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Success Confirmation Modal -->
+  <div class="modal-backdrop" id="emergency-success-modal">
+    <div class="modal-box" style="text-align: center;">
+      <div style="width: 64px; height: 64px; background: #dcfce7; color: #16a34a; border-radius: 50%; font-size: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+        ✓
+      </div>
+      <h3 style="font-size: 1.5rem; font-weight: 900; margin-bottom: 8px;">Emergency Request Created!</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">
+        Your blood requirement has been logged into the system and matched against the donor network.
+      </p>
+
+      <div style="background: #f8fafc; border: 1.5px solid var(--border); padding: 18px; border-radius: var(--radius-md); margin-bottom: 24px;">
+        <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Unique Tracking ID</div>
+        <div id="success-req-id" style="font-size: 1.8rem; font-weight: 900; color: var(--primary); letter-spacing: 1px; margin: 4px 0 10px;">
+          BR-XXXXXX
+        </div>
+        <div style="font-size: 0.9rem; color: var(--text-main);">
+          ⚡ Compatible Donors Found in Vicinity: <strong id="success-match-count" style="color: var(--success); font-size: 1.1rem;">0</strong>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; justify-content: center;">
+        <a href="#" id="btn-view-matches" class="btn btn-primary">
+          View Ranked Matching Donors ➔
+        </a>
+        <a href="/my-requests.html" class="btn btn-outline">
+          Track in My Requests
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container" style="text-align: center; font-size: 0.85rem;">
+      © 2026 AI-Based Smart Blood Donor Finder. Academic CSE Project.
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/request.js"></script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Based Smart Blood Donor Finder | Save Lives Intelligently</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/search.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/index.html" class="brand-logo">
+        <div class="blood-drop-icon">
+          <span>🩸</span>
+        </div>
+        <div class="brand-text">
+          <span>Smart <span class="accent">BloodFinder</span></span>
+          <small>AI-Assisted Donor Network</small>
+        </div>
+      </a>
+
+      <button class="mobile-nav-toggle" id="mobile-toggle" aria-label="Toggle Menu">☰</button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/index.html" class="nav-link active">Home</a></li>
+        <li><a href="/search.html" class="nav-link">Find Blood</a></li>
+        <li><a href="/donor-register.html" class="nav-link">Become a Donor</a></li>
+        <li><a href="/emergency-request.html" class="nav-link" style="color: var(--primary); font-weight: 700;">Emergency 🚨</a></li>
+        <li><a href="/about.html" class="nav-link">About & AI</a></li>
+        <li><a href="/contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions" id="nav-actions">
+        <!-- Injected dynamically via auth.js -->
+        <a href="/login.html" class="btn btn-outline btn-sm">Sign In</a>
+        <a href="/register.html" class="btn btn-primary btn-sm">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="badge-tag">
+          <span class="dot"></span> Intelligent Rule-Based Matching Algorithm
+        </div>
+        <h1 class="hero-title">
+          AI-Based Smart <br><span class="highlight">Blood Donor Finder</span>
+        </h1>
+        <p class="hero-subtitle">
+          Connect with compatible, verified blood donors instantly when every second counts. Powered by intelligent compatibility analysis, location proximity, and real-time donor availability.
+        </p>
+        <div class="hero-buttons">
+          <a href="/search.html" class="btn btn-primary btn-lg">
+            🔍 Find Blood Donors
+          </a>
+          <a href="/donor-register.html" class="btn btn-outline btn-lg">
+            🩸 Register as Donor
+          </a>
+          <a href="/emergency-request.html" class="btn btn-emergency btn-lg">
+            🚨 Emergency Request
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Finder Box -->
+      <div class="hero-card-box">
+        <h3>⚡ Instant Blood Finder</h3>
+        <p>Select patient blood group to find top ranked donors immediately.</p>
+        <form action="/search.html" method="GET">
+          <div class="form-group">
+            <label class="form-label">Recipient Blood Group <span class="req">*</span></label>
+            <select class="form-control" name="blood_group" required>
+              <option value="">-- Choose Blood Type --</option>
+              <option value="A+">A+ (A Positive)</option>
+              <option value="A-">A- (A Negative)</option>
+              <option value="B+">B+ (B Positive)</option>
+              <option value="B-">B- (B Negative)</option>
+              <option value="AB+">AB+ (AB Positive - Universal Recipient)</option>
+              <option value="AB-">AB- (AB Negative)</option>
+              <option value="O+">O+ (O Positive)</option>
+              <option value="O-">O- (O Negative - Universal Donor)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">City / Region (Optional)</label>
+            <input type="text" class="form-control" name="city" placeholder="e.g. Mumbai, Chennai, Delhi...">
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            Find Compatible Donors ➔
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real-Time Statistics Section -->
+  <section class="stats-section">
+    <div class="container stats-grid">
+      <div class="stat-item">
+        <div class="stat-icon">🩸</div>
+        <div class="stat-info">
+          <div class="stat-num" id="stat-total-donors">19</div>
+          <div class="stat-label">Registered Donors</div>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon">🧬</div>
+        <div class="stat-info">
+          <div class="stat-num">8 / 8</div>
+          <div class="stat-label">Blood Groups Active</div>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon">🤝</div>
+        <div class="stat-info">
+          <div class="stat-num" id="stat-matches">12</div>
+          <div class="stat-label">Successful Matches</div>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon" style="color: var(--primary);">🚨</div>
+        <div class="stat-info">
+          <div class="stat-num" id="stat-emergencies">2</div>
+          <div class="stat-label">Active Emergencies</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="section-wrapper">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Fast & Seamless</span>
+        <h2 class="section-title">How Smart Blood Finder Works</h2>
+        <p class="section-subtitle">A transparent 4-step workflow connecting patients and life savers with maximum algorithmic precision.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-icon">📝</div>
+          <h3 class="step-title">1. Search or Request</h3>
+          <p class="step-desc">Enter the patient's blood group, hospital location, and urgency requirements.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-icon">🧠</div>
+          <h3 class="step-title">2. AI Rule Matching</h3>
+          <p class="step-desc">The algorithm evaluates RBC compatibility, distance, availability, and safe donation intervals.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-icon">⭐</div>
+          <h3 class="step-title">3. Ranked Donors</h3>
+          <p class="step-desc">Inspect transparent Application Match Scores with complete compatibility breakdown.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <div class="step-icon">🤝</div>
+          <h3 class="step-title">4. Direct Contact</h3>
+          <p class="step-desc">Send immediate blood alerts directly to the donor. Track response status in real-time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Blood Compatibility Matrix Section -->
+  <section class="section-wrapper" style="background: #fff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Medical Logic</span>
+        <h2 class="section-title">Interactive Compatibility Matrix</h2>
+        <p class="section-subtitle">Click any blood type below to explore red blood cell antigen compatibility rules powered by our backend algorithm.</p>
+      </div>
+
+      <div class="compat-widget-box">
+        <div class="compat-selector-row" id="compat-pills">
+          <!-- Injected via main.js -->
+        </div>
+
+        <h3 id="compat-type-title" style="text-align: center; margin-bottom: 20px; font-weight: 800;">
+          Blood Group: O-
+        </h3>
+
+        <div class="compat-results-box">
+          <div class="compat-column">
+            <h4>📥 Can Receive Red Blood Cells From:</h4>
+            <div class="compat-tag-group" id="compat-receive-list">
+              <!-- Injected via main.js -->
+            </div>
+          </div>
+
+          <div class="compat-column">
+            <h4>📤 Can Safely Donate Red Blood Cells To:</h4>
+            <div class="compat-tag-group" id="compat-donate-list">
+              <!-- Injected via main.js -->
+            </div>
+          </div>
+        </div>
+
+        <div id="compat-note" style="margin-top: 18px; font-size: 0.9rem; color: var(--text-muted); text-align: center;">
+          <!-- Special note injected via main.js -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features Grid -->
+  <section class="section-wrapper">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Smart Capabilities</span>
+        <h2 class="section-title">Engineered for Critical Situations</h2>
+        <p class="section-subtitle">Designed to eliminate delays, prevent medical mismatches, and protect donor health.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrap">🎯</div>
+          <h3 class="feature-title">Rule-Based AI Ranking</h3>
+          <p class="feature-desc">Calculates a transparent 100-point score evaluating blood compatibility (50pts), proximity (25pts), availability (15pts), and donation intervals (10pts).</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrap">🛡️</div>
+          <h3 class="feature-title">Strict Medical Validation</h3>
+          <p class="feature-desc">Strict Red Blood Cell compatibility prevents incompatible donor recommendations. Clinical safety remains paramount.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrap">📍</div>
+          <h3 class="feature-title">Area & City Proximity</h3>
+          <p class="feature-desc">Prioritizes donors located in the same neighborhood or city to minimize critical transportation time.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrap">🚨</div>
+          <h3 class="feature-title">Emergency Broadcast</h3>
+          <p class="feature-desc">Generates trackable BR-XXXXXX request IDs with immediate matching donor computation for life-threatening emergencies.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrap">🔄</div>
+          <h3 class="feature-title">Live Availability Switch</h3>
+          <p class="feature-desc">Donors can instantly toggle between Available and Temporarily Unavailable to avoid unwanted calls when resting.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrap">🔒</div>
+          <h3 class="feature-title">Secure & Confidential</h3>
+          <p class="feature-desc">Passwords secured with cryptographic hashing. Contact details shared only upon mutual request acceptance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emergency Banner -->
+  <div class="container">
+    <div class="emergency-banner">
+      <div class="emergency-banner-content">
+        <h2>In Urgent Need of Blood?</h2>
+        <p>Submit an emergency blood requirement in under 60 seconds. Our system immediately alerts and ranks matching compatible donors in your area.</p>
+      </div>
+      <a href="/emergency-request.html" class="btn btn-lg" style="background: #fff; color: #b91c1c; font-weight: 800; box-shadow: 0 4px 14px rgba(0,0,0,0.2);">
+        Create Emergency Request ➔
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/index.html" class="brand-logo">
+            <div class="blood-drop-icon"><span>🩸</span></div>
+            <div class="brand-text">
+              <span style="color:#fff;">Smart <span class="accent">BloodFinder</span></span>
+              <small>College CSE Project</small>
+            </div>
+          </a>
+          <p class="footer-desc">
+            An intelligent rule-based academic web application designed to connect patients and blood donors rapidly during medical emergencies.
+          </p>
+          <div class="footer-disclaimer-box">
+            ⚠️ <strong>Academic Disclaimer:</strong> This application is a search and matching aid. It does not replace medical advice, physician consultation, or hospital blood-bank cross-matching.
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/search.html">Find Blood Donors</a></li>
+            <li><a href="/donor-register.html">Become a Donor</a></li>
+            <li><a href="/emergency-request.html">Emergency Request</a></li>
+            <li><a href="/dashboard.html">User Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Information</h4>
+          <ul class="footer-links">
+            <li><a href="/about.html">About AI Matching</a></li>
+            <li><a href="/about.html#compatibility">Compatibility Matrix</a></li>
+            <li><a href="/contact.html">Emergency Helpline</a></li>
+            <li><a href="/login.html">Donor Login</a></li>
+            <li><a href="/admin.html">Admin Portal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Emergency Support</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 12px; color: #cbd5e1;">Available 24/7 for urgent blood donor assistance.</p>
+          <div style="font-size: 1.2rem; font-weight: 800; color: #ef4444; margin-bottom: 8px;">📞 1800-BLOOD-HELP</div>
+          <div style="font-size: 0.85rem; color: #94a3b8;">National Blood Helpline: 104</div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 AI-Based Smart Blood Donor Finder. Developed for College CSE Academic Project.</div>
+        <div style="display: flex; gap: 16px;">
+          <a href="/about.html">Architecture</a>
+          <a href="/contact.html">Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

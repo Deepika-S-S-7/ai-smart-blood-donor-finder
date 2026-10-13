@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Requests | AI-Based Smart Blood Donor Finder</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body id="my-requests-page">
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/index.html" class="brand-logo">
+        <div class="blood-drop-icon"><span>🩸</span></div>
+        <div class="brand-text">
+          <span>Smart <span class="accent">BloodFinder</span></span>
+          <small>AI-Assisted Donor Network</small>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="/search.html" class="nav-link">Find Blood</a></li>
+        <li><a href="/my-requests.html" class="nav-link active">My Requests</a></li>
+        <li><a href="/emergency-request.html" class="nav-link" style="color: var(--primary);">Emergency 🚨</a></li>
+        <li><a href="/profile.html" class="nav-link">Profile</a></li>
+      </ul>
+
+      <div class="nav-actions" id="nav-actions">
+        <!-- Injected dynamically via auth.js -->
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-wrapper">
+    <div class="container">
+
+      <div style="margin-bottom: 28px;">
+        <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 6px;">Blood Requests & Status Tracking</h1>
+        <p style="color: var(--text-muted);">Track your sent requirements and manage incoming direct donor requests.</p>
+      </div>
+
+      <!-- Tab Switcher -->
+      <div style="display: flex; border-bottom: 2px solid var(--border); margin-bottom: 28px; gap: 16px;">
+        <button id="tab-seeker-btn" class="btn btn-outline active" style="border-radius: var(--radius-md) var(--radius-md) 0 0; border-bottom: none; font-weight: 700;">
+          📤 Outgoing Blood Requests (Seeker)
+        </button>
+        <button id="tab-incoming-btn" class="btn btn-outline" style="border-radius: var(--radius-md) var(--radius-md) 0 0; border-bottom: none; font-weight: 700; display: none;">
+          📥 Incoming Donor Requests (Action Required)
+        </button>
+      </div>
+
+      <!-- Tab View 1: Seeker Requests -->
+      <div id="view-seeker-requests" class="dash-panel">
+        <div class="dash-panel-header">
+          <h3 class="dash-panel-title">My Sent Blood Donation Requests</h3>
+          <a href="/search.html" class="btn btn-primary btn-sm">Find More Donors</a>
+        </div>
+
+        <div class="table-responsive">
+          <table class="app-table">
+            <thead>
+              <tr>
+                <th>Request ID</th>
+                <th>Target Donor</th>
+                <th>Patient</th>
+                <th>Hospital</th>
+                <th>Match Score</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="seeker-requests-tbody">
+              <tr><td colspan="7" style="text-align: center; padding: 24px;">Loading your requests...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab View 2: Donor Incoming Requests -->
+      <div id="view-incoming-requests" class="dash-panel" style="display: none;">
+        <div class="dash-panel-header">
+          <h3 class="dash-panel-title">Incoming Blood Requests to You</h3>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Respond quickly to assist emergency patients.</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="app-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Requester Info</th>
+                <th>Patient & Hospital</th>
+                <th>Urgency</th>
+                <th>Current Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="incoming-requests-tbody">
+              <tr><td colspan="6" style="text-align: center; padding: 24px;">Loading incoming requests...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="text-align: center; font-size: 0.85rem;">
+      © 2026 AI-Based Smart Blood Donor Finder. Academic CSE Project.
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/request.js"></script>
+</body>
+</html>

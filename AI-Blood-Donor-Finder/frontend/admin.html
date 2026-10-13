@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | AI-Based Smart Blood Donor Finder</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <style>
+    .admin-tab-btn {
+      padding: 10px 20px;
+      background: none;
+      border: 1px solid transparent;
+      border-bottom: 3px solid transparent;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .admin-tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+      background: #fff;
+    }
+  </style>
+</head>
+<body id="admin-page">
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/index.html" class="brand-logo">
+        <div class="blood-drop-icon" style="background: linear-gradient(135deg, #1e293b, #0f172a);"><span>🛡️</span></div>
+        <div class="brand-text">
+          <span>Admin <span class="accent" style="color: #dc2626;">Control</span></span>
+          <small>System Governance Portal</small>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link">Main Site</a></li>
+        <li><a href="/search.html" class="nav-link">Donor Search</a></li>
+        <li><a href="/admin.html" class="nav-link active">Admin Dashboard</a></li>
+      </ul>
+
+      <div class="nav-actions" id="nav-actions">
+        <!-- Injected dynamically via auth.js -->
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-wrapper">
+    <div class="container">
+
+      <!-- Admin Top Metrics -->
+      <div style="margin-bottom: 24px;">
+        <h1 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 6px;">Platform Administration Dashboard</h1>
+        <p style="color: var(--text-muted);">Manage platform users, verify blood donors, oversee emergency broadcasts, and monitor system health.</p>
+      </div>
+
+      <!-- KPI Grid -->
+      <div class="dash-metrics-grid" style="margin-bottom: 32px;">
+        <div class="dash-metric-card">
+          <div class="metric-icon-box blue">👥</div>
+          <div class="metric-details">
+            <div class="metric-value" id="admin-kpi-users">--</div>
+            <div class="metric-label">Total Users</div>
+          </div>
+        </div>
+
+        <div class="dash-metric-card">
+          <div class="metric-icon-box red">🩸</div>
+          <div class="metric-details">
+            <div class="metric-value" id="admin-kpi-donors">--</div>
+            <div class="metric-label">Registered Donors</div>
+          </div>
+        </div>
+
+        <div class="dash-metric-card">
+          <div class="metric-icon-box yellow">🚨</div>
+          <div class="metric-details">
+            <div class="metric-value" id="admin-kpi-emergencies">--</div>
+            <div class="metric-label">Active Emergencies</div>
+          </div>
+        </div>
+
+        <div class="dash-metric-card">
+          <div class="metric-icon-box green">📋</div>
+          <div class="metric-details">
+            <div class="metric-value" id="admin-kpi-requests">--</div>
+            <div class="metric-label">Blood Requirements</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blood Group Inventory Ribbon -->
+      <div class="dash-panel" style="margin-bottom: 32px;">
+        <div class="dash-panel-header">
+          <h3 class="dash-panel-title">🩸 Active Donor Distribution Across Blood Types</h3>
+        </div>
+        <div id="admin-bg-breakdown" style="display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px;">
+          <!-- Injected via admin.js -->
+        </div>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div style="display: flex; gap: 8px; border-bottom: 2px solid var(--border); margin-bottom: 24px;">
+        <button class="admin-tab-btn active" data-target="admin-sec-users">User Accounts</button>
+        <button class="admin-tab-btn" data-target="admin-sec-donors">Donor Management</button>
+        <button class="admin-tab-btn" data-target="admin-sec-requests">Blood Requests</button>
+        <button class="admin-tab-btn" data-target="admin-sec-logs">System Audit Logs</button>
+      </div>
+
+      <!-- Tab 1: Users -->
+      <div class="dash-panel admin-section" id="admin-sec-users">
+        <div class="dash-panel-header">
+          <h3 class="dash-panel-title">Manage Registered Users</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="app-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Account Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-users-tbody">
+              <tr><td colspan="7" style="text-align: center; padding: 24px;">Loading users...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 2: Donors -->
+      <div class="dash-panel admin-section" id="admin-sec-donors" style="display: none;">
+        <div class="dash-panel-header">
+          <h3 class="dash-panel-title">Manage Verified Donors</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="app-table">
+            <thead>
+              <tr>
+                <th>Donor ID</th>
+                <th>Name & Demographics</th>
+                <th>Blood Type</th>
+                <th>Location</th>
+                <th>Phone</th>
+                <th>Availability</th>
+                <th>Last Donated</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-donors-tbody">
+              <tr><td colspan="8" style="text-align: center; padding: 24px;">Loading donors...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 3: Blood Requests -->
+      <div class="dash-panel admin-section" id="admin-sec-requests" style="display: none;">
+        <div class="dash-panel-header">
+          <h3 class="dash-panel-title">Oversee Blood Requirements</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="app-table">
+            <thead>
+              <tr>
+                <th>Request ID</th>
+                <th>Patient</th>
+                <th>Blood Group</th>
+                <th>Hospital & Location</th>
+                <th>Urgency</th>
+                <th>Update Status</th>
+                <th>Required Date</th>
+              </tr>
+            </thead>
+            <tbody id="admin-requests-tbody">
+              <tr><td colspan="7" style="text-align: center; padding: 24px;">Loading requests...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 4: Audit Logs -->
+      <div class="dash-panel admin-section" id="admin-sec-logs" style="display: none;">
+        <div class="dash-panel-header">
+          <h3 class="dash-panel-title">Administrative Audit Trail</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="app-table">
+            <thead>
+              <tr>
+                <th>Log ID</th>
+                <th>Action Type</th>
+                <th>Details</th>
+                <th>Timestamp</th>
+              </tr>
+            </thead>
+            <tbody id="admin-logs-tbody">
+              <tr><td colspan="4" style="text-align: center; padding: 24px;">Loading logs...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="text-align: center; font-size: 0.85rem;">
+      © 2026 AI-Based Smart Blood Donor Finder. Academic CSE Project.
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>
